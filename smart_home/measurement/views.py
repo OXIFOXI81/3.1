@@ -4,8 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.generics import CreateAPIView,ListAPIView,RetrieveUpdateAPIView,UpdateAPIView,RetrieveAPIView
 from rest_framework.response import Response
 from .models import Sensor,Measurement
-from .serializers import SensorSerializer,MeasurementSerializer,SensorDetailSerializer,\
-    MeasurementSerializer_sensor
+from .serializers import SensorSerializer,SensorDetailSerializer,MeasurementSerializer_sensor
 
 @api_view (['GET','POST','PUT','PATCH'])
 def sensors_list(request):
@@ -37,10 +36,8 @@ class SensorDetailListView(RetrieveAPIView):
     queryset=Sensor.objects.prefetch_related('measurements')
     serializer_class=SensorDetailSerializer
 
-from rest_framework.viewsets import ModelViewSet
-# class SaleDetails(RetrieveAPIView):
-#     queryset = Measurement.objects.select_related('sensor')
-#     serializer_class = MeasurementSerializer
+
+
 
 
 
