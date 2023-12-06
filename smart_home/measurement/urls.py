@@ -1,21 +1,16 @@
-from django.urls import path,include
+from django.urls import path
 from django.contrib import admin
 
 
+
+from .views import  CreateSensorView, SensorsListView, SensorsUpdateView,CreateMeasurementView,SensorDetailListView
+
 urlpatterns = [
-    path('', include('smart_home.urls'))
+     path('sensors/',SensorsListView.as_view()),
+     path('sensors/create/', CreateSensorView.as_view()),
+     path('sensors/update/<int:pk>/', SensorsUpdateView.as_view()),
+     path('sensors/create_m/<int:pk>/', CreateMeasurementView.as_view()),
+     path('sensors/list/<int:pk>/', SensorDetailListView.as_view()),
+
 ]
 
-
-
-# from django.contrib import admin
-# from django.urls import path
-#
-# from main.views import cars_list, CreateCarView, CarsListView, SaleDetails
-#
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-#     path('api/v1/cars/', CarsListView.as_view()),
-#     path('api/v1/cars/create/', CreateCarView.as_view()),
-#     path('api/v1/sales/<int:pk>/', SaleDetails.as_view())
-# ]
